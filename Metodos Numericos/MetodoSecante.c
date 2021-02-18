@@ -32,14 +32,14 @@ int main(void)
     printf("---------------------------------------------------------------------------\n");
 
     numero_calculos = 1; 
-    fx1 = pow(x1, 3) + pow(3.5f * x1, 2) - 40; 
-    fx2 = pow(x2, 3) + pow(3.5f * x2, 2) - 40;
+    fx1 = pow(x1, 3) + (3.5f * pow(x1, 2)) - 40; 
+    fx2 = pow(x2, 3) + (3.5f * pow(x2, 2)) - 40;
 
     do
     {
         
         x3 = x1 - (((x1 - x2) * fx1) / (fx1 - fx2));
-        fx3 = pow(x3, 3) + pow(3.5f * x3, 2) - 40;
+        fx3 = pow(x3, 3) + (3.5f * pow(x3, 2)) - 40;
 
         printf("%d %10.6f %10.6f %10.6f", numero_calculos, x1, x2, x3);
         printf(" %10.6f  %10.6f %10.6f\n", fx1, fx2, fx3);
