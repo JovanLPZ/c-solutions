@@ -75,7 +75,7 @@ int main(void)
 void presentacion(void)
 {
 
-    printf("Instituto Tecnologico de Culiacan\nIng. en sistemas computacionales\n\n");
+    printf("\nInstituto Tecnologico de Culiacan\nIng. en sistemas computacionales\n\n");
     printf("Jovan Lopez\nRaices de una Ecuacion - Metodo de la secante\nDe 11:00 a 12:00 horas\n");
     printf("Este programa ejecuta el proceso de calculo de raices de una ecuacion utilizando el metodo de la secante\n\n");
 
