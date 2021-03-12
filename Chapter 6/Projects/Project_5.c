@@ -4,15 +4,19 @@ int main(void)
 {
     int num;
 
-    printf("Enter a two-digit number: ");
+    printf("Enter a whatever you like-digit number: ");
     scanf("%d", &num);
 
     printf("The reversal is: ");
 
-    for (int i = 1; i < num; i++)
+    do
     {
-        printf("%d", i);
-    }
+        
+        printf("%d", num % 10);
+        num /= 10;  
+
+    } while (num != 0);
+    
     
     
 
