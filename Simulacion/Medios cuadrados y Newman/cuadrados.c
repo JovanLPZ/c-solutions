@@ -8,7 +8,7 @@ int getNumber(int number);
 
 int main(void)
 {
-    int number[10000];
+    int number;
     int numbersqr;
     short sw;
     bool repeated = false;
@@ -34,19 +34,18 @@ int main(void)
             {
                 case 1:
 
-                    printf("Enter a whatever you like-digit number: ");
-                    scanf("%d", &number[0]);
+                    printf("\nIngrese el numero: ");
+                    scanf("%d", &number);
 
                     int i = 0;
 
                     do
                     {
-                        numbersqr = pow(number[i], 2);
+                        numbersqr = pow(number, 2);
                         printf("%d) %d <-> %d \n", i, number, numbersqr);
-                        number[i] = getNumber(numbersqr);
-                        i++;
+                       
 
-                        for (int l = 0; l < sizeof(number); l++)
+                        /*for (int l = 0; l < sizeof(number); l++)
                         {
                             for (int j = i + 1; j < sizeof(number); j++)
                             {
@@ -57,20 +56,20 @@ int main(void)
                                 
                             }
                             
-                        }
+                        }*/
                         
-                        number[i + 1] = getMiddle(number[i]);
+                        number = getNumber(numbersqr);
 
                         i++;
 
-                    } while (i < sizeof(number) || repeated != false || number[i] != 0);
+                    } while (i < sizeof(number) || repeated != false || number != 0);
 
 
                 break;
 
                 case 2:
 
-                    number[0] = rand() % (9999 + 1000);
+                    number = rand() % (9999 + 1000);
                     
                 break;
                 
@@ -94,14 +93,14 @@ int main(void)
                 case 1:
                 
                     printf("\nIngrese el numero: ");
-                    scanf("%d", &number[0]);
+                    scanf("%d", &number);
 
                 
                 break;
 
                 case 2:
 
-                    number[0] = rand() % (9999 + 1);
+                    number = rand() % (9999 + 1);
                     
                 break;
                 
@@ -123,25 +122,17 @@ int main(void)
     return 0;
 }
 
-int getMiddle(int number)
+int getNumber(int number)
 {
-    char snumber[8];
-    char zero[8];
+    int str = 0, n = 100000, j = 3;
 
-    sprintf(snumber, "%d", number);
-
-    int length = strlen(snumber);
-    int add = 8 - length;
-
-    for (int i = 1; i <= length; i++)
+    do
     {
-        strcpy(zero, "0");
-        strcat(zero, snumber);
-    }
-
-    char fnumber[4] = {zero[2], zero[3], zero[4], zero[5]};
+        str = str + (((number / n) % 10) * pow(10, j));
+        n /= 10;
+        j--;
+    } while (j != 0);
     
-    number = atoi(fnumber);
 
-    return number;
+    return str+1;
 }
