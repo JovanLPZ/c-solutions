@@ -6,7 +6,7 @@ int main(void)
 {
     int agujas, intentos = 0, aciertos = 0, num1, num2, lineas[6] = {20, 40, 60, 80, 100, 120};
     float pi;
-    srand(time(0)); //num = rand() % (10000 + 1);
+    srand(time(0));
 
     printf("Digite el numero de intentos: ");
     scanf("%d", &agujas);
@@ -50,6 +50,7 @@ int main(void)
             {
                 intentos++;
                 aciertos++;
+                break;
             }
             else
             {
@@ -58,7 +59,6 @@ int main(void)
             
         }
         
-        //pi = (float) aciertos / (float) intentos;
         pi = ((float) intentos / (float) aciertos) / 2;
 
         x[i] = i;
@@ -69,27 +69,27 @@ int main(void)
     printf("El valor aproximado de PI es %.4f\n", pi);
 
 
-    /*ScatterPlotSeries *series = GetDefaultScatterPlotSeriesSettings();
+    ScatterPlotSeries *series = GetDefaultScatterPlotSeriesSettings();
 	series->xs = x;
-	series->xsLength = 5;
+	series->xsLength = agujas;
 	series->ys = y;
-	series->ysLength = 5;
-	series->linearInterpolation = true;
-	series->lineType = L"dots";
-	series->lineTypeLength = wcslen(series->lineType);
-	series->lineThickness = 2;
-	series->color = GetGray(0.3);
+	series->ysLength = agujas;
+	series->linearInterpolation = false;
+	series->pointType = L"dots";
+	series->pointTypeLength = wcslen(series->pointType);
+	series->lineThickness = 1;
+	series->color = CreateRGBColor(0, 0, 1) ;
 
 	ScatterPlotSettings *settings = GetDefaultScatterPlotSettings();
-	settings->width = 600;
-	settings->height = 400;
+	settings->width = 1200;
+	settings->height = 800;
 	settings->autoBoundaries = true;
 	settings->autoPadding = true;
     settings->title = L"Aproximaciones de PI respecto a los intentos";
     settings->titleLength = wcslen(settings->title);
-    settings->xLabel = L"Intentos";
+    settings->xLabel = L"Aproximacion de PI";
     settings->xLabelLength = wcslen(settings->xLabel);
-    settings->yLabel = L"Aproximacion de PI";
+    settings->yLabel = L"Intentos";
     settings->yLabelLength = wcslen(settings->yLabel);
     
 	ScatterPlotSeries *s [] = {series};
@@ -99,20 +99,19 @@ int main(void)
 	RGBABitmapImageReference *canvasReference = CreateRGBABitmapImageReference();
 	DrawScatterPlotFromSettings(canvasReference, settings);
 
+
+    double x1 = MapXCoordinateAutoSettings(0, canvasReference->image, x, 10);
+    double y1 = MapYCoordinateAutoSettings(3.1416, canvasReference->image, y, 10);
+
+    double x2 = MapXCoordinateAutoSettings(300, canvasReference->image, x, 10);
+    double y2 = MapYCoordinateAutoSettings(3.1416, canvasReference->image, y, 10);
+
+    DrawLine(canvasReference->image, x1, y1, x2, y2, 2, GetGray(0.3));
+
 	size_t length;
 	double *pngdata = ConvertToPNG(&length, canvasReference->image);
 	WriteToFile(pngdata, length, "grafica.png");
-    DeleteImage(canvasReference->image);*/
-
-    RGBABitmapImageReference *imageRef = CreateRGBABitmapImageReference();
-
-    DrawScatterPlot(imageRef, 600, 400, x, agujas, y, agujas);
-
-    size_t length;
-    double *pngData = ConvertToPNG(&length, imageRef->image);
-    WriteToFile(pngData, length, "grafica.png");
-
-
+    DeleteImage(canvasReference->image);
 
     return 0;
 }
