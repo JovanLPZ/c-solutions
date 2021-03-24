@@ -25,7 +25,7 @@ int main(void)
 
             for (int i = 1; i <= num; i++)
             {
-                printf("%d.- %d\n",i, rand() % (10000 + 1));
+                printf("%d.- %.4f\n",i, ((float)rand())/RAND_MAX);
             }
             
         break;
@@ -36,7 +36,7 @@ int main(void)
 
         for (int i = 1; i <= num; i++)
             {
-                printf("\n%d.- %d",i, rand() % (10000 + 1));
+                printf("\n%d.- %.4f",i, ((float)rand())/RAND_MAX);
             }
 
         break;
