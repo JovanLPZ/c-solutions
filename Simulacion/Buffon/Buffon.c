@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "pbPlots.h"
+#include "supportLib.h"
 
 int main(void)
 {
@@ -67,8 +69,48 @@ int main(void)
     printf("El valor aproximado de PI es %.4f\n", pi);
 
 
+    /*ScatterPlotSeries *series = GetDefaultScatterPlotSeriesSettings();
+	series->xs = x;
+	series->xsLength = 5;
+	series->ys = y;
+	series->ysLength = 5;
+	series->linearInterpolation = true;
+	series->lineType = L"dots";
+	series->lineTypeLength = wcslen(series->lineType);
+	series->lineThickness = 2;
+	series->color = GetGray(0.3);
 
+	ScatterPlotSettings *settings = GetDefaultScatterPlotSettings();
+	settings->width = 600;
+	settings->height = 400;
+	settings->autoBoundaries = true;
+	settings->autoPadding = true;
+    settings->title = L"Aproximaciones de PI respecto a los intentos";
+    settings->titleLength = wcslen(settings->title);
+    settings->xLabel = L"Intentos";
+    settings->xLabelLength = wcslen(settings->xLabel);
+    settings->yLabel = L"Aproximacion de PI";
+    settings->yLabelLength = wcslen(settings->yLabel);
     
+	ScatterPlotSeries *s [] = {series};
+	settings->scatterPlotSeries = s;
+	settings->scatterPlotSeriesLength = 1;
+
+	RGBABitmapImageReference *canvasReference = CreateRGBABitmapImageReference();
+	DrawScatterPlotFromSettings(canvasReference, settings);
+
+	size_t length;
+	double *pngdata = ConvertToPNG(&length, canvasReference->image);
+	WriteToFile(pngdata, length, "grafica.png");
+    DeleteImage(canvasReference->image);*/
+
+    RGBABitmapImageReference *imageRef = CreateRGBABitmapImageReference();
+
+    DrawScatterPlot(imageRef, 600, 400, x, agujas, y, agujas);
+
+    size_t length;
+    double *pngData = ConvertToPNG(&length, imageRef->image);
+    WriteToFile(pngData, length, "grafica.png");
 
 
 
