@@ -50,13 +50,12 @@ int main(void)
             {
                 intentos++;
                 aciertos++;
-                break;
             }
+
             else
             {
                 intentos++;
             }
-            
         }
         
         pi = ((float) intentos / (float) aciertos) / 2;
@@ -81,8 +80,8 @@ int main(void)
 	series->color = CreateRGBColor(0, 0, 1) ;
 
 	ScatterPlotSettings *settings = GetDefaultScatterPlotSettings();
-	settings->width = 1200;
-	settings->height = 800;
+	settings->width = 1600;
+	settings->height = 900;
 	settings->autoBoundaries = true;
 	settings->autoPadding = true;
     settings->title = L"Aproximaciones de PI respecto a los intentos";
@@ -103,7 +102,7 @@ int main(void)
     double x1 = MapXCoordinateAutoSettings(0, canvasReference->image, x, 10);
     double y1 = MapYCoordinateAutoSettings(3.1416, canvasReference->image, y, 10);
 
-    double x2 = MapXCoordinateAutoSettings(300, canvasReference->image, x, 10);
+    double x2 = MapXCoordinateAutoSettings(agujas, canvasReference->image, x, 10);
     double y2 = MapYCoordinateAutoSettings(3.1416, canvasReference->image, y, 10);
 
     DrawLine(canvasReference->image, x1, y1, x2, y2, 2, GetGray(0.3));
