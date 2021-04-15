@@ -10,7 +10,6 @@ int main(void)
     Coordenada x = 0, y = 0;
     short simulaciones, exitos;
     float probabilidad; 
-    char exito[2][2] = {"Si", "No"};
     srand(time(0));
 
     printf("Ingrese el numero de simulaciones a realizar: ");
